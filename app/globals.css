@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --tomato: #D4271E;
+  --cream: #F7F2E8;
+  --charcoal: #1C1C1E;
+  --ember: #E07B39;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle diagonal paper texture on cream backgrounds */
+.texture-cream {
+  background-color: var(--cream);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 24px,
+    rgba(0, 0, 0, 0.018) 24px,
+    rgba(0, 0, 0, 0.018) 25px
+  );
+}
+
+/* Flat section divider */
+.section-rule {
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background-color: var(--tomato);
+  margin-bottom: 2rem;
+}
