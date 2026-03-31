@@ -1,40 +1,32 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Award, Clock, Flame, LayoutGrid } from 'lucide-react'
+
 const highlights = [
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-      </svg>
-    ),
-    title: 'Formé par un vice-champion du monde',
-    body: 'Jordan Tomas, vice-champion du monde de pizza 2013 — un savoir-faire transmis avec rigueur.',
+    icon: <Award size={24} />,
+    title: 'Form\u00e9 par un vice-champion du monde',
+    body: 'Jordan Tomas, vice-champion du monde de pizza 2013 \u2014 un savoir-faire transmis avec rigueur.',
+    gradient: 'from-tomato/10 to-tomato/5',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-        <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      </svg>
-    ),
-    title: 'Pâte à longue fermentation',
-    body: 'Plusieurs jours de repos pour une pâte légère, alvéolée et digeste. La patience, au cœur de l\'art.',
+    icon: <Clock size={24} />,
+    title: 'P\u00e2te \u00e0 longue fermentation',
+    body: "Plusieurs jours de repos pour une p\u00e2te l\u00e9g\u00e8re, alv\u00e9ol\u00e9e et digeste. La patience, au c\u0153ur de l'art.",
+    gradient: 'from-ember/10 to-ember/5',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M12 22C12 22 4 16 4 9a8 8 0 0 1 16 0c0 7-8 13-8 13z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-      </svg>
-    ),
+    icon: <Flame size={24} />,
     title: 'Cuisson au feu de bois',
-    body: 'Une croûte charbonnée, un cœur moelleux. Le four à bois donne à chaque pizza son caractère unique.',
+    body: 'Une cro\u00fbte charbonn\u00e9e, un c\u0153ur moelleux. Le four \u00e0 bois donne \u00e0 chaque pizza son caract\u00e8re unique.',
+    gradient: 'from-tomato/10 to-ember/5',
   },
   {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-      </svg>
-    ),
+    icon: <LayoutGrid size={24} />,
     title: '23 pizzas, 3 modes de service',
-    body: 'Sur place, livraison, ou Click & Collect. 14 pizzas base tomate, 9 base crème, dont 7 options végétariennes.',
+    body: 'Sur place, livraison, ou Click & Collect. 14 pizzas base tomate, 9 base cr\u00e8me, dont 7 options v\u00e9g\u00e9tariennes.',
+    gradient: 'from-ember/10 to-tomato/5',
   },
 ]
 
@@ -42,39 +34,70 @@ export default function About() {
   return (
     <section
       id="qui-sommes-nous"
-      className="bg-charcoal text-cream"
+      className="relative bg-charcoal text-cream overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+      {/* Background glow */}
+      <div
+        aria-hidden
+        className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-b from-tomato/8 to-transparent blur-3xl pointer-events-none"
+      />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
         {/* Header */}
-        <div className="mb-16 max-w-2xl">
-          <p className="font-inter text-xs uppercase tracking-[0.35em] text-ember mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+          className="mb-20 max-w-2xl"
+        >
+          <p className="font-inter text-xs uppercase tracking-[0.35em] text-ember mb-4 flex items-center gap-3">
+            <span className="inline-block w-8 h-px bg-ember" />
             Qui sommes-nous&nbsp;?
           </p>
           <h2 className="font-playfair font-bold text-cream text-[clamp(2.2rem,5vw,4rem)] leading-tight mb-6">
-            Ni artiste,<br />ni napolitain.
+            Ni artiste,
+            <br />
+            <span className="bg-gradient-to-r from-tomato-300 to-ember-300 bg-clip-text text-transparent">
+              ni napolitain.
+            </span>
           </h2>
-          <span className="block w-12 h-0.5 bg-tomato mb-8" />
-          <p className="font-inter text-base md:text-lg text-cream/70 leading-relaxed">
-            Un passionné issu de multiples cultures, installé à Saint-Étienne avec
+          <motion.span
+            initial={{ width: 0 }}
+            whileInView={{ width: '3rem' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="block h-0.5 bg-gradient-to-r from-tomato to-ember rounded-full mb-8"
+          />
+          <p className="font-inter text-base md:text-lg text-cream/60 leading-relaxed">
+            Un passionn&eacute; issu de multiples cultures, install&eacute; &agrave; Saint-&Eacute;tienne avec
             une seule obsession&nbsp;: la pizza napolitaine dans sa forme la plus authentique.
-            Formé par Jordan Tomas, vice-champion du monde 2013, il a fait de la lenteur
+            Form&eacute; par Jordan Tomas, vice-champion du monde 2013, il a fait de la lenteur
             et de l&apos;exigence les piliers de sa cuisine.
           </p>
-        </div>
+        </motion.div>
 
         {/* Highlights grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border-t-2 border-cream/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {highlights.map((h, i) => (
-            <div
+            <motion.div
               key={i}
-              className="p-8 border-b-2 border-r-0 border-cream/10 lg:border-b-0 lg:border-r-2 last:border-0"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className={`group relative p-8 rounded-2xl bg-gradient-to-br ${h.gradient} border border-cream/5 hover:border-cream/15 transition-all duration-500 hover:-translate-y-1`}
             >
-              <div className="text-ember mb-4">{h.icon}</div>
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-tomato to-ember text-white mb-6 shadow-glow-tomato group-hover:scale-110 transition-transform duration-300">
+                {h.icon}
+              </div>
               <h3 className="font-playfair font-semibold text-cream text-lg mb-3 leading-snug">
                 {h.title}
               </h3>
-              <p className="font-inter text-sm text-cream/60 leading-relaxed">{h.body}</p>
-            </div>
+              <p className="font-inter text-sm text-cream/50 leading-relaxed group-hover:text-cream/70 transition-colors duration-300">
+                {h.body}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>

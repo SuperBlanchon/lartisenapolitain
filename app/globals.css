@@ -17,25 +17,54 @@ body {
   background-color: var(--cream);
   color: var(--charcoal);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle diagonal paper texture on cream backgrounds */
+/* Warm grain texture overlay */
 .texture-cream {
   background-color: var(--cream);
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 24px,
-    rgba(0, 0, 0, 0.018) 24px,
-    rgba(0, 0, 0, 0.018) 25px
-  );
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(224, 123, 57, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 39, 30, 0.03) 0%, transparent 50%);
 }
 
-/* Flat section divider */
+/* Section divider accent */
 .section-rule {
   display: block;
   width: 3rem;
   height: 3px;
-  background-color: var(--tomato);
+  background: linear-gradient(90deg, var(--tomato), var(--ember));
+  border-radius: 2px;
   margin-bottom: 2rem;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(28, 28, 30, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 28, 30, 0.4);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(212, 39, 30, 0.15);
+  color: var(--charcoal);
 }
