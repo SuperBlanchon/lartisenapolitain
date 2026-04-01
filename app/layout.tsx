@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Noto_Serif, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
+const notoSerif = Noto_Serif({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-noto-serif',
   display: 'swap',
+  style: ['normal', 'italic'],
 })
 
-const playfair = Playfair_Display({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-jakarta',
   display: 'swap',
 })
 
@@ -26,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
-      <body>{children}</body>
+    <html lang="fr" className={`${notoSerif.variable} ${jakarta.variable}`}>
+      <body className="font-body">{children}</body>
     </html>
   )
 }
